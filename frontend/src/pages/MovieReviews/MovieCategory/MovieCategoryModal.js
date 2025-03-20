@@ -1,0 +1,94 @@
+import { useRef, useState } from 'react';
+import axiosInstance from '../../../services/axiosInstance';
+import styles from './MovieCategoryModal.module.scss';
+import { MdOutlineImage } from "react-icons/md";
+
+function MovieCategoryModal({isOpen, onClose, onCategoryAdded}){
+    const [title, setTitle] = useState("");
+    const [imageFile, setImageFile] = useState(null);
+    const fileInputRef = useRef(null);
+
+    if (!isOpen) return null;
+
+    const handleIconClick = () => {
+        fileInputRef.current.click();
+    };
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setImageFile(file); 
+            // setImageUrl(""); // Clear URL input if a file is selected
+        }
+    };
+
+    const handleUpload = async () => {
+        if(!title.trim()) {
+            alert("Please enter movie title");
+            return;
+        }
+
+        if(!imageFile) {
+            alert("Please upload again");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("imageUrl", imageFile);
+
+        try{
+            const response = await axiosInstance.post("/section/add", formData, {
+                headers: {"Content-Type": "multipart/form-data"},
+            });
+
+            if(response.status === 200) {
+                alert("Movie category for titles added successfully");
+                onCategoryAdded();
+                onClose();
+                setTitle("");
+                setImageFile(null);
+                fileInputRef.current.value = "";
+            }
+        } catch (error) {
+            console.error("Error Details:", error);
+            alert("Failed to add movie categories for titles:" + (error.response?.data?.message || "unknown error"));
+        }
+    }
+    return(
+        
+        <div className={styles.modalOverlay}>
+            <div className={styles.modalContent}>
+                <button onClick={onClose} className={styles.cancel}>X</button>
+                <label>Movie Category</label>
+                <div className={styles.inputContainer}>
+                    <input 
+                        type="text"
+                        placeholder="Enter Movie title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+                </div>
+        
+                <label>Movie title Thumbnail Image</label>
+                <div className={styles.inputContainer}>
+                    <input type="file" ref={fileInputRef} onChange={handleFileChange} hidden />
+                    <input
+                        type="text"
+                        placeholder="Select Image"
+                        // value={imageUrl}
+                        onChange={() => setImageFile(null)}
+                        disabled={imageFile !== null} // Disable if file is selected
+                    />
+                    <MdOutlineImage className={styles.icon} onClick={handleIconClick} />
+                </div>
+
+                <div className={styles.modalActions}>
+                    <button onClick={handleUpload} className={styles.add}>Upload Movie Title</button>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default MovieCategoryModal;

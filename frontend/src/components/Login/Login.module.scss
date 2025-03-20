@@ -1,0 +1,103 @@
+@use "../../styles/GlobalStyles.module.scss" as *; // Importing global styles
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: var(--background-color);
+}
+
+.modal {
+  background: var(--input-border-color);
+  padding: 2.5rem;
+  border-radius: 12px; 
+  text-align: center;
+  width: 500px;
+  height: 500px;
+
+  .title {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0;
+    font-weight: bold;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-top: 0;
+    margin-bottom: 1.9rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      align-self: flex-start;
+      font-size: 0.9rem;
+      padding-left: 3.1pc;
+      color: var(--text-color);
+      margin-bottom: 0.3rem;
+    }
+
+    .inputContainer {
+      position: relative;
+      width: 80%;
+      margin-bottom: 1rem;
+
+      input {
+        width: 100%;
+        padding: 11px 40px 11px 11px;
+        border: 1px solid var(--input-border-color);
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: 0.3s;
+        box-sizing: border-box;
+
+        &:focus {
+          border-color: var(--input-focus-color);
+          outline: none;
+          box-shadow: 0 0 5px rgba(42, 82, 152, 0.5);
+        }
+      }
+
+      .clearIcon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 18px;
+        color: var(--input-focus-color);
+        pointer-events: auto;
+
+        &:hover {
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+}
+
+.submit {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  button {
+    width: 60%;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-align: center;
+  }
+}

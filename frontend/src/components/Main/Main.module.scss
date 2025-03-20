@@ -1,0 +1,51 @@
+.main {
+    // background-color: #403f3f;  
+    background-color: var(--input-border-color);
+    min-height: calc(100vh - 60px); /* Full viewport height */
+    margin-top: 60px;
+    margin-left: 260px; /* Offset for sidebar */
+    padding: 20px; 
+    box-sizing: border-box; 
+    overflow-y: auto; /* Enabling scrolling if content exceeds viewport */
+
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.main {
+    flex-grow: 1;
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.withSidebar {
+    margin-left: 260px; // Space for sidebar
+}
+
+.fullWidth {
+    margin-left: 0; // Full screen when sidebar is collapsed
+}
+
+/* Hamburger Menu (Hidden by default) */
+.hamburgerMenu {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: white;
+    z-index: 300;
+}
+
+/*Show Hamburger on Small Screens */
+@media (max-width: 768px) {
+    .hamburgerMenu {
+        display: block;
+    }
+}
+

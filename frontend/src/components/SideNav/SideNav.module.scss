@@ -1,0 +1,125 @@
+@use "../../styles/GlobalStyles.module.scss" as *; // Import global styles
+
+.sidemenu {
+    background-color: var(--background-color);
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh; // Full height
+    width: 260px; // Sidebar width
+    box-sizing: border-box;
+    z-index: 100;
+    transition: width 0.3s ease-in-out; // Smooth transition for responsiveness
+
+    h2 {
+      color: var(--primary-color);
+      text-align: center;
+      font-size: 1.8rem;
+      margin-top: 2rem;
+      margin-bottom: 3rem;
+    }
+  
+    nav {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+  
+      p {
+        display: flex;
+        align-items: center;
+        margin: 12px 0;
+        cursor: pointer;
+        color: #ffffff;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 12px 18px; // More padding for better click area
+        border-radius: 8px;
+        transition: background-color 0.3s, color 0.3s;
+
+        a {
+          text-decoration: none; // Remove underline from links
+          color: inherit; // Inherit text color from parent
+          display: flex;
+          align-items: center;
+          width: 100%; // Make the whole area clickable
+        }
+  
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.2); // Better hover effect
+        }
+
+        svg {
+          font-size: 1.6rem;
+          margin-right: 12px;
+        }
+      }
+    }
+}
+
+// 📌 Responsive Design for Mobile
+@media (max-width: 768px) {
+    .sidemenu {
+      width: 70px; // Smaller sidebar on mobile
+      padding: 15px;
+
+      h2 {
+        display: none; // Hide title on small screens
+      }
+
+      nav p {
+        justify-content: center; // Center icons
+        padding: 10px;
+
+        a {
+          justify-content: center; // Center icon inside the link
+        }
+
+        svg {
+          margin-right: 0; // Remove space between icon & text
+        }
+      }
+    }
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 📌 Main Content */
+.main {
+  flex-grow: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.withSidebar {
+  margin-left: 260px; // Space for sidebar
+}
+
+.fullWidth {
+  margin-left: 0; // Full screen when sidebar is collapsed
+}
+
+/* 📌 Hamburger Menu (Hidden by default) */
+.hamburgerMenu {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+  z-index: 300;
+}
+
+/* 📌 Show Hamburger on Small Screens */
+@media (max-width: 768px) {
+  .hamburgerMenu {
+      display: block;
+  }
+}
+

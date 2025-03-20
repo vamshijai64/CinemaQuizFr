@@ -1,0 +1,23 @@
+// Defining theme variables first
+$primary-color: #efe933;
+$background-color: #000000;
+$text-color: #ffffff;
+$input-border-color: #474646;
+$input-focus-color: #2a5298;
+$primary-button-color: #169241;
+$primary-hover: #004c8c;
+$button-text-color: #ffffff;
+$heading-text-color: black;
+
+// Applying theme variables in this global styles
+:root {
+  --primary-color: #{$primary-color};
+  --background-color: #{$background-color};
+  --text-color: #{$text-color};
+  --input-border-color: #{$input-border-color};
+  --input-focus-color: #{$input-focus-color};
+  --primary-button-color: #{$primary-button-color};
+  --primary-hover: #{$primary-hover};
+  --button-text-color: #{$button-text-color};
+  --heading-text-color: #{$heading-text-color};
+}

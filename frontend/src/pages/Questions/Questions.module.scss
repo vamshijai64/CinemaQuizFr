@@ -1,0 +1,41 @@
+@use "../../styles/GlobalStyles.module.scss" as *; 
+
+.main {
+    background-color: var(--input-border-color); 
+    min-height: 86vh; 
+    width: 100%; 
+    display: flex;
+    align-items: flex-start; 
+    justify-content: center; 
+    //padding: 10px; 
+    //box-sizing: border-box; 
+}
+
+.questions {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; 
+}
+
+.title {
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin: 0;
+    color: black;
+}
+
+.add {
+    font-size: 1.1rem;
+    background: var(--background-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 10px 15px;
+    margin-left: 10px; 
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+
+
